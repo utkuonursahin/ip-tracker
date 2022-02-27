@@ -10,7 +10,7 @@ const Map = () => {
 
   return (
       <section className="map">
-        {data &&
+        {data ?
             <MapContainer center={[data.location.lat, data.location.lng]} zoom={12} className="map__container">
               <TileLayer
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -23,6 +23,7 @@ const Map = () => {
               </Marker>
               <ChangeMapView coords={[data.location.lat, data.location.lng]}/>
             </MapContainer>
+        : <img src="./spinner.svg" className="spinner"/>
         }
       </section>
   );

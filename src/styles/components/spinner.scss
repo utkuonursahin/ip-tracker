@@ -1,0 +1,13 @@
+@use "../abstracts/abstract" as abs;
+.spinner{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5rem;
+  height: 5rem;
+  -webkit-animation: 1s rotate infinite linear;
+  animation: 1s rotate infinite linear;
+}
+@keyframes rotate {
+  100%{transform: rotate(360deg);}
+}

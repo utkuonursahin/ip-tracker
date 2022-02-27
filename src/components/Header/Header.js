@@ -10,6 +10,7 @@ const Header = ({setError}) => {
   const handleSubmit = async function (e) {
     try{
       e.preventDefault()
+      setData(null)
       const res = await axios(`${SERVERLESS_URL}/api?ipAddress=${ipAddress}`)
       setData(res.data)
     }catch (error){setError(error)}
