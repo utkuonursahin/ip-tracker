@@ -1,0 +1,24 @@
+@use "../abstracts/abstract" as abs;
+*,
+*::before,
+*::after{
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+html{
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: abs.$font-primary;
+  font-weight: abs.$font-regular;
+}
+
+.app{
+  position: relative;
+  display: grid;
+  grid-template-rows: 35vh 65vh;
+}

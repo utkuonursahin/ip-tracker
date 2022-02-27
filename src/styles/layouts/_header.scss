@@ -1,0 +1,85 @@
+@use "../abstracts/abstract" as abs;
+.header{
+  grid-row: 1 / 2;
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  padding: 1rem 2.5rem;
+  background-image: url("../../../public/pattern-bg.png");
+  background-repeat: no-repeat;
+  @media only screen and (min-width: abs.$bp-smallest){background-size: 105%; padding: 2rem 20rem;}
+  &__heading{
+    font-size: min(10vw,6rem);
+    font-weight: abs.$font-regular;
+    text-align: center;
+    color: abs.$color-white;
+  }
+  &__form{
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    & input, button{
+      border: none;
+      outline: none;
+      height: 5rem;
+    }
+    & input{
+      width: 100%;
+      border-radius: 1rem 0 0 1rem;
+      text-align: center;
+      font-size: min(4vw,2rem);
+    }
+    & button{
+      width: 5rem;
+      border-radius: 0 1rem 1rem 0;
+      background-color: abs.$color-darkest-gray;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      &:hover{box-shadow: 0 0 .5rem .25rem rgba(abs.$color-darkest-gray,.5)}
+    }
+  }
+  & .info-modal{
+    z-index: 1000;
+    overflow: visible;
+    width: 100%;
+    padding: 1rem 0;
+    background-color: abs.$color-white;
+    border-radius: 1rem;
+    &__list{
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      @media only screen and (min-width: abs.$bp-smallest){flex-direction: row;justify-content: center;}
+      &-item{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: .5rem;
+        @media only screen and (min-width: abs.$bp-smallest){
+          padding: 0 2rem;
+          justify-content: center;
+          &:not(&:last-child){border-right: .2rem solid abs.$color-dark-gray;}
+        }
+        & h2{
+          font-size: 1.2rem;
+          letter-spacing: 2px;
+          text-align: center;
+          font-weight: abs.$font-bold;
+          color: abs.$color-dark-gray;
+        }
+        & span{
+          text-align: center;
+          font-size: 1.6rem;
+          font-weight: abs.$font-medium;
+        }
+      }
+    }
+  }
+}

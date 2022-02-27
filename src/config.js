@@ -1,0 +1,1 @@
+export const SERVERLESS_URL = 'https://iptrackeer.netlify.app/.netlify/functions'

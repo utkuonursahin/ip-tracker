@@ -1,0 +1,42 @@
+@use "../abstracts/abstract" as abs;
+.error{
+  z-index: 1000;
+  padding: 3rem 5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  background-image: linear-gradient(to right,#4A4CAB,#5D81EB);
+  border-radius: 1rem;
+  box-shadow: .5rem .5rem .75rem .25rem rgba(#4A4CAB,.75);
+  & h1{
+    color: abs.$color-white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    font-size: 2rem;
+    font-weight: abs.$font-regular;
+    text-align: center;
+    & span{
+      font-size: 1.6rem;
+      font-weight: abs.$font-bold;
+    }
+  }
+  & button{
+    cursor: pointer;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: abs.$color-darkest-gray;
+    color: abs.$color-white;
+    font-size: 1.6rem;
+    &:hover{
+      background-color: #5D81EB;
+    }
+  }
+}
