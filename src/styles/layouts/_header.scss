@@ -50,6 +50,7 @@
     width: 100%;
     padding: 1rem 0;
     background-color: abs.$color-white;
+    box-shadow: 0 0 1rem .25rem rgba(abs.$color-darkest-gray,.75);
     border-radius: 1rem;
     &__list{
       list-style: none;
