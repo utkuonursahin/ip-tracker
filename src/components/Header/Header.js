@@ -1,19 +1,26 @@
-import {useState} from "react";
-import {useIPData} from "../../context/IPDataContext/IPDataContext";
-import InfoModal from "./InfoModal/InfoModal";
 import axios from "axios";
+import {useState} from "react";
+import {useMain} from "../../context/MainContext";
+import InfoModal from "./InfoModal/InfoModal";
 import {SERVERLESS_URL} from "../../config";
 
-const Header = ({setError}) => {
+const Header = () => {
   const [ipAddress,setIPAddress] = useState('')
-  const {data, setData} = useIPData()
+  const {data, setData, setError, setIsLoaded} = useMain()
   const handleSubmit = async function (e) {
     try{
       e.preventDefault()
       setData(null)
+      setIsLoaded(prev => !prev)
       const res = await axios(`${SERVERLESS_URL}/api?ipAddress=${ipAddress}`)
+      setIsLoaded(prev => !prev)
+      setIPAddress('')
       setData(res.data)
-    }catch (error){setError(error)}
+    }catch (error){
+      setError(error)
+      setIsLoaded(prev => !prev)
+      setIPAddress('')
+    }
   }
   return (
       <header className="header">

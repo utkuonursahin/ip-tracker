@@ -1,17 +1,21 @@
 import {MapContainer, TileLayer, Marker, Popup} from 'react-leaflet';
-import {useIPData} from "../../context/IPDataContext/IPDataContext";
+import {useMain} from "../../context/MainContext";
 import ChangeMapView from "./ChangeMapView/ChangeMapView";
 import * as L from "leaflet";
+import Error from "../Error/Error";
 
 const Map = () => {
-  const {data} = useIPData()
-  const LeafIcon = L.Icon.extend({options: {}})
-  const icon = new LeafIcon({iconUrl: "/icon-location.svg"})
+  const {data, isLoaded, error} = useMain()
+  const icon = L.icon({
+    iconUrl: "/icon-location.svg",
+    iconSize: [36, 46],
+    iconAnchor: [18, 46]
+  })
 
   return (
       <section className="map">
-        {data ?
-            <MapContainer center={[data.location.lat, data.location.lng]} zoom={12} className="map__container">
+        {data &&
+            <MapContainer center={[data.location.lat, data.location.lng]} zoom={13} className="map__container">
               <TileLayer
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -23,8 +27,9 @@ const Map = () => {
               </Marker>
               <ChangeMapView coords={[data.location.lat, data.location.lng]}/>
             </MapContainer>
-        : <img src="./spinner.svg" className="spinner"/>
         }
+        {!isLoaded && <img src="./spinner.svg" alt="loading spinner" className="spinner"/>}
+        {error && <Error/>}
       </section>
   );
 };

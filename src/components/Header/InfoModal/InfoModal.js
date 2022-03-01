@@ -1,7 +1,7 @@
-import {useIPData} from "../../../context/IPDataContext/IPDataContext";
+import {useMain} from "../../../context/MainContext";
 
 const InfoModal = () => {
-  const {data} = useIPData()
+  const {data} = useMain()
   return (
       <div className="info-modal">
         <ul className="info-modal__list">

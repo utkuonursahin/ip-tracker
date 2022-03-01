@@ -1,4 +1,7 @@
-const Error = ({error, setError}) => {
+import {useMain} from "../../context/MainContext";
+
+const Error = () => {
+  const {error, setError} = useMain()
   return (
       <div className="error">
         <h1>Something went wrong :(
